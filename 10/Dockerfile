@@ -11,7 +11,8 @@ RUN apt-get update && \
   cd /tmp/pgaudit && \
   curl -L https://github.com/pgaudit/pgaudit/archive/1.2.1.tar.gz | tar xz --strip 1 && \
   make -C /tmp/pgaudit/ install USE_PGXS=1 && \
-  apt-get purge postgresql-server-dev-${PG_MAJOR} --auto-remove -y
+  apt-get purge libssl-dev libkrb5-dev curl ca-certificates build-essential postgresql-server-dev-${PG_MAJOR} --auto-remove -y && \
+  rm -rf /var/lib/apt/lists/*
 
 COPY pgaudit-docker-entrypoint.sh /usr/local/bin/
 COPY init.sql /docker-entrypoint-initdb.d/
