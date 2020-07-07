@@ -1,4 +1,4 @@
-= Minimal usage =
+# Minimal usage
 ```
   docker run \
     -e IS_AUDIT_LOG_ENABLED=true \
